@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mapa Interativo de Viena</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map { height: 600px; }
+        .legend { background: white; padding: 10px; }
+        .legend-item { display: flex; align-items: center; }
+        .legend-color { width: 20px; height: 20px; margin-right: 5px; }
+    </style>
+</head>
+<body>
+
+<h1>Mapa Interativo de Viena - Atrações Principais</h1>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+    // Inicializar o mapa
+    var map = L.map('map').setView([48.2082, 16.3738], 13);
+
+    // Adicionar o tile layer do OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Cores para diferentes categorias de atrações
+    var colors = {
+        'Palácio de Schönbrunn': 'blue',
+        'Catedral de Santo Estêvão': 'green',
+        'Museu de História da Arte': 'red',
+        'Ópera Estatal de Viena': 'purple',
+        'Parque Prater': 'orange',
+        'Palácio Belvedere': 'yellow',
+        'Museu de História Natural': 'pink',
+        'Mercado de Naschmarkt': 'brown',
+        'Museu Albertina': 'cyan',
+        'Casa da Música': 'magenta',
+        'Karlskirche': 'lime',
+        'Museu de História Militar': 'teal',
+        'Heuriger': 'gray'
+    };
+
+    // Atrações com suas localizações e categorias
+    var attractions = [
+        { name: 'Palácio de Schönbrunn', coords: [48.1845, 16.3122], category: 'Palácio de Schönbrunn' },
+        { name: 'Catedral de Santo Estêvão', coords: [48.2083, 16.3731], category: 'Catedral de Santo Estêvão' },
+        { name: 'Museu de História da Arte', coords: [48.2034, 16.3616], category: 'Museu de História da Arte' },
+        { name: 'Ópera Estatal de Viena', coords: [48.2025, 16.3684], category: 'Ópera Estatal de Viena' },
+        { name: 'Parque Prater', coords: [48.2160, 16.3970], category: 'Parque Prater' },
+        { name: 'Palácio Belvedere', coords: [48.1915, 16.3802], category: 'Palácio Belvedere' },
+        { name: 'Museu de História Natural', coords: [48.2051, 16.3609], category: 'Museu de História Natural' },
+        { name: 'Mercado de Naschmarkt', coords: [48.1978, 16.3610], category: 'Mercado de Naschmarkt' },
+        { name: 'Museu Albertina', coords: [48.2044, 16.3688], category: 'Museu Albertina' },
+        { name: 'Casa da Música', coords: [48.2047, 16.3767], category: 'Casa da Música' },
+        { name: 'Karlskirche', coords: [48.1984, 16.3708], category: 'Karlskirche' },
+        { name: 'Museu de História Militar', coords: [48.1851, 16.3863], category: 'Museu de História Militar' },
+        { name: 'Heuriger', coords: [48.2493, 16.3201], category: 'Heuriger' }
+    ];
+
+    // Adicionar os marcadores ao mapa
+    attractions.forEach(function(attraction) {
+        var color = colors[attraction.category];
+        var marker = L.circleMarker(attraction.coords, {
+            color: color,
+            radius: 8,
+            fillColor: color,
+            fillOpacity: 0.8
+        }).addTo(map);
+        marker.bindPopup('<b>' + attraction.name + '</b>');
+    });
+
+    // Adicionar a legenda
+    var legend = L.control({ position: 'bottomright' });
+    legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'legend');
+        div.innerHTML = '<h4>Legenda</h4>';
+        for (var category in colors) {
+            div.innerHTML += '<div class="legend-item"><div class="legend-color" style="background-color: ' + colors[category] + ';"></div>' + category + '</div>';
+        }
+        return div;
+    };
+    legend.addTo(map);
+
+</script>
+
+</body>
+</html>
