@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d5bdfa2082f1a53e79e03b6d0201d9ef {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+            bottom: 50px; left: 50px; width: 250px; height: 450px; 
+            border:2px solid grey; z-index:9999; font-size:12px; overflow-y: auto; background-color: white;">
+    <div style="padding: 10px;">
+    <b>Legenda</b><br>
+    <i class="fa fa-map-marker fa-2x" style="color:red"></i>&nbsp;Museu do Prado<br>
+    <i class="fa fa-map-marker fa-2x" style="color:blue"></i>&nbsp;Parque El Retiro<br>
+    <i class="fa fa-map-marker fa-2x" style="color:green"></i>&nbsp;Palácio Real<br>
+    <i class="fa fa-map-marker fa-2x" style="color:purple"></i>&nbsp;Museu Rainha Sofia<br>
+    <i class="fa fa-map-marker fa-2x" style="color:orange"></i>&nbsp;Puerta del Sol<br>
+    <i class="fa fa-map-marker fa-2x" style="color:darkred"></i>&nbsp;Plaza Mayor<br>
+    <i class="fa fa-map-marker fa-2x" style="color:lightred"></i>&nbsp;Museu Thyssen-Bornemisza<br>
+    <i class="fa fa-map-marker fa-2x" style="color:beige"></i>&nbsp;Templo de Debod<br>
+    <i class="fa fa-map-marker fa-2x" style="color:darkblue"></i>&nbsp;Gran Vía<br>
+    <i class="fa fa-map-marker fa-2x" style="color:darkgreen"></i>&nbsp;Mercado de São Miguel<br>
+    <i class="fa fa-map-marker fa-2x" style="color:cadetblue"></i>&nbsp;Estádio Santiago Bernabéu<br>
+    <i class="fa fa-map-marker fa-2x" style="color:darkpurple"></i>&nbsp;Casa de campo<br>
+    <i class="fa fa-map-marker fa-2x" style="color:pink"></i>&nbsp;Puerta de Toledo<br>
+    <i class="fa fa-map-marker fa-2x" style="color:lightblue"></i>&nbsp;Farol de Monchoa<br>
+    <i class="fa fa-map-marker fa-2x" style="color:lightgreen"></i>&nbsp;Estação Atocha<br>
+    <i class="fa fa-map-marker fa-2x" style="color:gray"></i>&nbsp;Catedral da Almudena<br>
+    <i class="fa fa-map-marker fa-2x" style="color:black"></i>&nbsp;Praça de Touros Las Ventas<br>
+    <i class="fa fa-map-marker fa-2x" style="color:lightgray"></i>&nbsp;Torres KIO<br>
+    </div>
+</div>
+    
+            <div class="folium-map" id="map_d5bdfa2082f1a53e79e03b6d0201d9ef" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d5bdfa2082f1a53e79e03b6d0201d9ef = L.map(
+                "map_d5bdfa2082f1a53e79e03b6d0201d9ef",
+                {
+                    center: [40.4168, -3.7038],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b8accd79ed822e8e8a10f32f7562eb21 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var marker_afa6aeb04d87b3e2e21a74e1d17cb407 = L.marker(
+                [40.4138, -3.6921],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_a9c01913be6da5972508b3e40033cf18 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_afa6aeb04d87b3e2e21a74e1d17cb407.setIcon(icon_a9c01913be6da5972508b3e40033cf18);
+        
+    
+        var popup_eaeef602b7464f96c94ede608964e81f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0cf4842bdf1ff3ec120c17658eb68c83 = $(`<div id="html_0cf4842bdf1ff3ec120c17658eb68c83" style="width: 100.0%; height: 100.0%;">Museu do Prado</div>`)[0];
+            popup_eaeef602b7464f96c94ede608964e81f.setContent(html_0cf4842bdf1ff3ec120c17658eb68c83);
+        
+
+        marker_afa6aeb04d87b3e2e21a74e1d17cb407.bindPopup(popup_eaeef602b7464f96c94ede608964e81f)
+        ;
+
+        
+    
+    
+            var marker_2ff023c39930ba334a74972a003bbb44 = L.marker(
+                [40.4154, -3.6843],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_0b3c23ba02808558dbf8d0c852beeef3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_2ff023c39930ba334a74972a003bbb44.setIcon(icon_0b3c23ba02808558dbf8d0c852beeef3);
+        
+    
+        var popup_ade452f80f2a2b39e86b29f255e7cb02 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_20bf4fd20749da97567ca6e690fbd6d9 = $(`<div id="html_20bf4fd20749da97567ca6e690fbd6d9" style="width: 100.0%; height: 100.0%;">Parque El Retiro</div>`)[0];
+            popup_ade452f80f2a2b39e86b29f255e7cb02.setContent(html_20bf4fd20749da97567ca6e690fbd6d9);
+        
+
+        marker_2ff023c39930ba334a74972a003bbb44.bindPopup(popup_ade452f80f2a2b39e86b29f255e7cb02)
+        ;
+
+        
+    
+    
+            var marker_62054ad3a7f3601a10f36679956561b1 = L.marker(
+                [40.4179, -3.7143],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_82a6bef1794879534772e5721ba17a86 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_62054ad3a7f3601a10f36679956561b1.setIcon(icon_82a6bef1794879534772e5721ba17a86);
+        
+    
+        var popup_6ee6dcd2c65f8e4148e28f3962159b9d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f1efb66a65a1e0c50a38d9fea1c9f0e0 = $(`<div id="html_f1efb66a65a1e0c50a38d9fea1c9f0e0" style="width: 100.0%; height: 100.0%;">Palácio Real</div>`)[0];
+            popup_6ee6dcd2c65f8e4148e28f3962159b9d.setContent(html_f1efb66a65a1e0c50a38d9fea1c9f0e0);
+        
+
+        marker_62054ad3a7f3601a10f36679956561b1.bindPopup(popup_6ee6dcd2c65f8e4148e28f3962159b9d)
+        ;
+
+        
+    
+    
+            var marker_40e8f1e73f269b9503024a36fed1f6e2 = L.marker(
+                [40.4086, -3.6942],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_07f68d2a3a1a76bb56b71bd7ebafcb96 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_40e8f1e73f269b9503024a36fed1f6e2.setIcon(icon_07f68d2a3a1a76bb56b71bd7ebafcb96);
+        
+    
+        var popup_f69eb7b1e1054ebd91c13e508e3a755c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_15c4915dbe8ae7542f420bd05415c6f4 = $(`<div id="html_15c4915dbe8ae7542f420bd05415c6f4" style="width: 100.0%; height: 100.0%;">Museu Rainha Sofia</div>`)[0];
+            popup_f69eb7b1e1054ebd91c13e508e3a755c.setContent(html_15c4915dbe8ae7542f420bd05415c6f4);
+        
+
+        marker_40e8f1e73f269b9503024a36fed1f6e2.bindPopup(popup_f69eb7b1e1054ebd91c13e508e3a755c)
+        ;
+
+        
+    
+    
+            var marker_7392012ebadce66b3282719585213c38 = L.marker(
+                [40.4169, -3.7038],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_1ff73b9f0d4ff01c285b0de0aad62f7c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_7392012ebadce66b3282719585213c38.setIcon(icon_1ff73b9f0d4ff01c285b0de0aad62f7c);
+        
+    
+        var popup_c82ca63b536371f83a3de54ef3c12eef = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2b0058048a2e03b60af31e1716d5c71d = $(`<div id="html_2b0058048a2e03b60af31e1716d5c71d" style="width: 100.0%; height: 100.0%;">Puerta del Sol</div>`)[0];
+            popup_c82ca63b536371f83a3de54ef3c12eef.setContent(html_2b0058048a2e03b60af31e1716d5c71d);
+        
+
+        marker_7392012ebadce66b3282719585213c38.bindPopup(popup_c82ca63b536371f83a3de54ef3c12eef)
+        ;
+
+        
+    
+    
+            var marker_465d39af2515821646dbf655d77bfd59 = L.marker(
+                [40.4155, -3.7074],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_19bbfb8adb1771b384f7b74513e0bdba = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkred", "prefix": "glyphicon"}
+            );
+            marker_465d39af2515821646dbf655d77bfd59.setIcon(icon_19bbfb8adb1771b384f7b74513e0bdba);
+        
+    
+        var popup_de663903e74b7b48c4186625875870a8 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_04947aad1b02c694063bff35aa0160db = $(`<div id="html_04947aad1b02c694063bff35aa0160db" style="width: 100.0%; height: 100.0%;">Plaza Mayor</div>`)[0];
+            popup_de663903e74b7b48c4186625875870a8.setContent(html_04947aad1b02c694063bff35aa0160db);
+        
+
+        marker_465d39af2515821646dbf655d77bfd59.bindPopup(popup_de663903e74b7b48c4186625875870a8)
+        ;
+
+        
+    
+    
+            var marker_5c0529a3536f814cf3c23c4c52645305 = L.marker(
+                [40.4163, -3.6942],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_d730568f459365731ce127a9f4b09bed = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightred", "prefix": "glyphicon"}
+            );
+            marker_5c0529a3536f814cf3c23c4c52645305.setIcon(icon_d730568f459365731ce127a9f4b09bed);
+        
+    
+        var popup_538dc0a32286a0a8c3a44eafd1c50f79 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2f79ba74487cfee7e892d80b77b200a7 = $(`<div id="html_2f79ba74487cfee7e892d80b77b200a7" style="width: 100.0%; height: 100.0%;">Museu Thyssen-Bornemisza</div>`)[0];
+            popup_538dc0a32286a0a8c3a44eafd1c50f79.setContent(html_2f79ba74487cfee7e892d80b77b200a7);
+        
+
+        marker_5c0529a3536f814cf3c23c4c52645305.bindPopup(popup_538dc0a32286a0a8c3a44eafd1c50f79)
+        ;
+
+        
+    
+    
+            var marker_e9ea0e11588cc978be781c5c1f9c130b = L.marker(
+                [40.425, -3.7172],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_f405999d93069ec600678a574d5be7e7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "beige", "prefix": "glyphicon"}
+            );
+            marker_e9ea0e11588cc978be781c5c1f9c130b.setIcon(icon_f405999d93069ec600678a574d5be7e7);
+        
+    
+        var popup_556ef6d0936b21c95427fbd5e4c63af5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_27f5687ea7ac5663bffad3e2252124b8 = $(`<div id="html_27f5687ea7ac5663bffad3e2252124b8" style="width: 100.0%; height: 100.0%;">Templo de Debod</div>`)[0];
+            popup_556ef6d0936b21c95427fbd5e4c63af5.setContent(html_27f5687ea7ac5663bffad3e2252124b8);
+        
+
+        marker_e9ea0e11588cc978be781c5c1f9c130b.bindPopup(popup_556ef6d0936b21c95427fbd5e4c63af5)
+        ;
+
+        
+    
+    
+            var marker_1972de4801fb5109849f17338dd26bfa = L.marker(
+                [40.4203, -3.7058],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_c156f7c5f5ec2633b2fc92a5c582ab8b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_1972de4801fb5109849f17338dd26bfa.setIcon(icon_c156f7c5f5ec2633b2fc92a5c582ab8b);
+        
+    
+        var popup_83d2f330b441962a6846b375c4869f51 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4a7942d315c1b580acab4d5d78c80590 = $(`<div id="html_4a7942d315c1b580acab4d5d78c80590" style="width: 100.0%; height: 100.0%;">Gran Vía</div>`)[0];
+            popup_83d2f330b441962a6846b375c4869f51.setContent(html_4a7942d315c1b580acab4d5d78c80590);
+        
+
+        marker_1972de4801fb5109849f17338dd26bfa.bindPopup(popup_83d2f330b441962a6846b375c4869f51)
+        ;
+
+        
+    
+    
+            var marker_bd3cc2ed5d0f31a0cb96d80dd2e26e8b = L.marker(
+                [40.4154, -3.7088],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_e7398d1d4a7f8fd109c1348bc2de6890 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkgreen", "prefix": "glyphicon"}
+            );
+            marker_bd3cc2ed5d0f31a0cb96d80dd2e26e8b.setIcon(icon_e7398d1d4a7f8fd109c1348bc2de6890);
+        
+    
+        var popup_39b47d4889e10e2d1ed78cc4a478f58a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_46bbe3cc3758ca947954c261535c0f00 = $(`<div id="html_46bbe3cc3758ca947954c261535c0f00" style="width: 100.0%; height: 100.0%;">Mercado de São Miguel</div>`)[0];
+            popup_39b47d4889e10e2d1ed78cc4a478f58a.setContent(html_46bbe3cc3758ca947954c261535c0f00);
+        
+
+        marker_bd3cc2ed5d0f31a0cb96d80dd2e26e8b.bindPopup(popup_39b47d4889e10e2d1ed78cc4a478f58a)
+        ;
+
+        
+    
+    
+            var marker_bac576edbbf0d1f2768d3a004d83cb86 = L.marker(
+                [40.4531, -3.6884],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_e630c22c73f10f53c32b6d646b64f8eb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "cadetblue", "prefix": "glyphicon"}
+            );
+            marker_bac576edbbf0d1f2768d3a004d83cb86.setIcon(icon_e630c22c73f10f53c32b6d646b64f8eb);
+        
+    
+        var popup_6fdff931eab5d7ba8e8bcff764327a23 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3f764ef8118262870bde8e431a00d591 = $(`<div id="html_3f764ef8118262870bde8e431a00d591" style="width: 100.0%; height: 100.0%;">Estádio Santiago Bernabéu</div>`)[0];
+            popup_6fdff931eab5d7ba8e8bcff764327a23.setContent(html_3f764ef8118262870bde8e431a00d591);
+        
+
+        marker_bac576edbbf0d1f2768d3a004d83cb86.bindPopup(popup_6fdff931eab5d7ba8e8bcff764327a23)
+        ;
+
+        
+    
+    
+            var marker_07a089fdb0609d513588e87a61100786 = L.marker(
+                [40.4118, -3.7459],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_7b121f1ce52a26fc1369066bd5dfa202 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkpurple", "prefix": "glyphicon"}
+            );
+            marker_07a089fdb0609d513588e87a61100786.setIcon(icon_7b121f1ce52a26fc1369066bd5dfa202);
+        
+    
+        var popup_72f32b750c3ac11545336e30369222b8 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_50498ea74f0bf785fdd3104c8d7d8284 = $(`<div id="html_50498ea74f0bf785fdd3104c8d7d8284" style="width: 100.0%; height: 100.0%;">Casa de campo</div>`)[0];
+            popup_72f32b750c3ac11545336e30369222b8.setContent(html_50498ea74f0bf785fdd3104c8d7d8284);
+        
+
+        marker_07a089fdb0609d513588e87a61100786.bindPopup(popup_72f32b750c3ac11545336e30369222b8)
+        ;
+
+        
+    
+    
+            var marker_d3b1c768b7c34934fa59ea1761370d73 = L.marker(
+                [40.4072, -3.712],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_dd185bc53079b8ac06380469d9f4c4a7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_d3b1c768b7c34934fa59ea1761370d73.setIcon(icon_dd185bc53079b8ac06380469d9f4c4a7);
+        
+    
+        var popup_28c7a0c7145dd79d2f064ce418d10ffb = L.popup({"maxWidth": "100%"});
+
+        
+            var html_235ceb24c2dfd2ade6e0156e04e47331 = $(`<div id="html_235ceb24c2dfd2ade6e0156e04e47331" style="width: 100.0%; height: 100.0%;">Puerta de Toledo</div>`)[0];
+            popup_28c7a0c7145dd79d2f064ce418d10ffb.setContent(html_235ceb24c2dfd2ade6e0156e04e47331);
+        
+
+        marker_d3b1c768b7c34934fa59ea1761370d73.bindPopup(popup_28c7a0c7145dd79d2f064ce418d10ffb)
+        ;
+
+        
+    
+    
+            var marker_ff61039f4f7cf1daa09e602175798a40 = L.marker(
+                [40.4036, -3.6975],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_f52874a4469c4324ceb0e1fd83cc1aa3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_ff61039f4f7cf1daa09e602175798a40.setIcon(icon_f52874a4469c4324ceb0e1fd83cc1aa3);
+        
+    
+        var popup_27e6d385568d7b852e43c938928613e0 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_bb2cc39db06a4f9bf4bb01b5fc85a348 = $(`<div id="html_bb2cc39db06a4f9bf4bb01b5fc85a348" style="width: 100.0%; height: 100.0%;">Farol de Monchoa</div>`)[0];
+            popup_27e6d385568d7b852e43c938928613e0.setContent(html_bb2cc39db06a4f9bf4bb01b5fc85a348);
+        
+
+        marker_ff61039f4f7cf1daa09e602175798a40.bindPopup(popup_27e6d385568d7b852e43c938928613e0)
+        ;
+
+        
+    
+    
+            var marker_c44861d49f1200601cf28d137d151b01 = L.marker(
+                [40.4066, -3.6914],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_9b041c87a9da080bf62a05cd1d82eb86 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_c44861d49f1200601cf28d137d151b01.setIcon(icon_9b041c87a9da080bf62a05cd1d82eb86);
+        
+    
+        var popup_8f66bd9eba6ed9a85b6cd93b55d54064 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_68e3c3d0ec8b0ab3de1d9a10c11ec014 = $(`<div id="html_68e3c3d0ec8b0ab3de1d9a10c11ec014" style="width: 100.0%; height: 100.0%;">Estação Atocha</div>`)[0];
+            popup_8f66bd9eba6ed9a85b6cd93b55d54064.setContent(html_68e3c3d0ec8b0ab3de1d9a10c11ec014);
+        
+
+        marker_c44861d49f1200601cf28d137d151b01.bindPopup(popup_8f66bd9eba6ed9a85b6cd93b55d54064)
+        ;
+
+        
+    
+    
+            var marker_f2d6f6b14a26fa309e8c067a14351675 = L.marker(
+                [40.4153, -3.7141],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_b249c366f35c4c6fce48425094846296 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "gray", "prefix": "glyphicon"}
+            );
+            marker_f2d6f6b14a26fa309e8c067a14351675.setIcon(icon_b249c366f35c4c6fce48425094846296);
+        
+    
+        var popup_442c9360c6fb90a142f3a87dd2f94ac9 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_37b176e4278e5d0a2bfa1b99f44d6f21 = $(`<div id="html_37b176e4278e5d0a2bfa1b99f44d6f21" style="width: 100.0%; height: 100.0%;">Catedral da Almudena</div>`)[0];
+            popup_442c9360c6fb90a142f3a87dd2f94ac9.setContent(html_37b176e4278e5d0a2bfa1b99f44d6f21);
+        
+
+        marker_f2d6f6b14a26fa309e8c067a14351675.bindPopup(popup_442c9360c6fb90a142f3a87dd2f94ac9)
+        ;
+
+        
+    
+    
+            var marker_086d369d5253a592407ea81adb3064cd = L.marker(
+                [40.4322, -3.6634],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_46d6abda1d8e3693d86e5665b0eabd8e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_086d369d5253a592407ea81adb3064cd.setIcon(icon_46d6abda1d8e3693d86e5665b0eabd8e);
+        
+    
+        var popup_fc9b4c8ab0b860bdc8bed231096ce9a4 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_907995a74b249c0e4b9a0c3b74159de8 = $(`<div id="html_907995a74b249c0e4b9a0c3b74159de8" style="width: 100.0%; height: 100.0%;">Praça de Touros Las Ventas</div>`)[0];
+            popup_fc9b4c8ab0b860bdc8bed231096ce9a4.setContent(html_907995a74b249c0e4b9a0c3b74159de8);
+        
+
+        marker_086d369d5253a592407ea81adb3064cd.bindPopup(popup_fc9b4c8ab0b860bdc8bed231096ce9a4)
+        ;
+
+        
+    
+    
+            var marker_98937b8d2c54040c47be010810e4d153 = L.marker(
+                [40.4652, -3.6885],
+                {}
+            ).addTo(map_d5bdfa2082f1a53e79e03b6d0201d9ef);
+        
+    
+            var icon_a33646c99dfca4b441471a637f88eaf1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_98937b8d2c54040c47be010810e4d153.setIcon(icon_a33646c99dfca4b441471a637f88eaf1);
+        
+    
+        var popup_89338439f7bc90119c5471c1ac9dc664 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_48800049e7debe88a4026ddf85e75a03 = $(`<div id="html_48800049e7debe88a4026ddf85e75a03" style="width: 100.0%; height: 100.0%;">Torres KIO</div>`)[0];
+            popup_89338439f7bc90119c5471c1ac9dc664.setContent(html_48800049e7debe88a4026ddf85e75a03);
+        
+
+        marker_98937b8d2c54040c47be010810e4d153.bindPopup(popup_89338439f7bc90119c5471c1ac9dc664)
+        ;
+
+        
+    
+</script>
+</html>
